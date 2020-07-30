@@ -6,27 +6,33 @@ Sub main()
     
     ' Declaracion de variables
     vectorA = Array(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+    ' Invocacion del procedimiento
+    Call transponer(vectorA)
+    
+End Sub
+
+Sub transponer(vector)
+
     Dim auxiliar(9) As Integer
     
     ' Proceso
-    For i = LBound(vectorA) To UBound(vectorA)
-        auxiliar(9 - i) = vectorA(i)
+    For i = LBound(vector) To UBound(vector)
+        auxiliar(9 - i) = vector(i)
     Next i
     
     ' Muestra el VectorA - Antes del Volcado
     Debug.Print "Vector_A - Antes"
-    For i = LBound(vectorA) To UBound(vectorA)
-        Debug.Print "V_A[" & (i + 1) & "] = " & vectorA(i)
+    For i = LBound(vector) To UBound(vector)
+        Debug.Print "V_A[" & (i + 1) & "] = " & vector(i)
     Next i
     
-    vectorA = auxiliar
+    vector = auxiliar
     Debug.Print " "
     
     ' Muestra el VectorA - Despues del Volcado
     Debug.Print "Vector_A - Despues"
-    For i = LBound(vectorA) To UBound(vectorA)
-        Debug.Print "V_A[" & (i + 1) & "] = " & vectorA(i)
+    For i = LBound(vector) To UBound(vector)
+        Debug.Print "V_A[" & (i + 1) & "] = " & vector(i)
     Next i
-    
     
 End Sub
