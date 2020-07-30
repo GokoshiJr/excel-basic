@@ -1,0 +1,60 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 1 - Contador elementos contenidos en un vector"
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    vectorB = Array(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+    
+    Debug.Print "-- Vector A --"
+    Call mostrar(vectorA, "A")
+    Debug.Print " "
+    
+    Debug.Print "-- Vector B --"
+    Call mostrar(vectorB, "B")
+    Debug.Print " "
+    
+    Call repetido(vectorA, vectorB)
+    
+
+End Sub
+
+Function repetido(ByRef vectorA, ByRef vectorB)
+
+        Dim contador As Integer
+
+        For i = LBound(vectorA) To UBound(vectorA)
+
+            For j = LBound(vectorB) To UBound(vectorB)
+
+                If (vectorA(i) = vectorB(j)) Then
+                    contador = contador + 1
+                    Exit For
+                End If
+
+            Next j
+
+        Next i
+
+        If contador = 1 Then ' Si hay un solo elemento se cambia el output
+            Debug.Print "Hay " & contador & " elemento del Vector_A contenido en el Vector_B."
+        Else
+            Debug.Print "Hay " & contador & " elementos del Vector_A contenidos en el Vector_B."
+        End If
+        
+End Function
+
+
+Function mostrar(ByRef vector, ByVal nombre)
+
+    For i = LBound(vector) To UBound(vector)
+    
+        If (vector(i) <> 0) Then
+            Debug.Print "Vector_" & nombre & "[" & (i + 1) & "]" & "= " & vector(i)
+        End If
+    
+    Next i
+
+End Function
