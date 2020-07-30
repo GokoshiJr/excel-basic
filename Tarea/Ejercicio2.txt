@@ -1,0 +1,69 @@
+Sub main()
+    
+    Debug.Print "Ejercicio 2"
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 4, 5)
+    vectorB = Array(2, 4, 6, 8, 10)
+    
+    'Call existe(vectorA, 6)
+    'Debug.Print existe(vectorA, 6)
+    elemento = existe(vectorB, 10)
+    Debug.Print elemento
+    Call unionConjuntos(vectorA, vectorB)
+    
+End Sub
+
+Function unionConjuntos(ByRef vectorA, ByRef vectorB)
+
+    Dim longA, longB As Integer
+    
+    ' longA = UBound(vectorA) - LBound(vectorA) + 1 ' longitud vectorA
+    ' longB = UBound(vectorB) - LBound(vectorB) + 1 ' longitud vectorB
+    
+    
+    
+    Dim universal(10) As Integer
+    
+    For i = LBound(vectorA) To UBound(vectorA)
+        universal(i) = vectorA(i)
+    Next i
+    
+    For i = LBound(vectorB) To UBound(vectorB)
+        If existe(universal, vectorB(i)) = False Then
+            universal(5 + x) = vectorB(i)
+            x = x + 1
+        End If
+        
+        
+    Next i
+    
+    For i = 0 To 7
+    Debug.Print universal(i)
+    Next i
+    
+    
+    
+    
+    
+    
+
+
+End Function
+
+
+Function existe(ByRef vector, ByVal elemento)
+
+    ' Comprueba si existe un elemento en el vector
+    For i = LBound(vector) To UBound(vector)
+    
+        If vector(i) = elemento Then
+            existeElement = True
+        End If
+        
+    Next i
+    
+    existe = existeElement
+    
+End Function
+

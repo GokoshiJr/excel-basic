@@ -1,0 +1,32 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio_1 - Transponer Vector"
+    Debug.Print " "
+    
+    ' Declaracion de variables
+    vectorA = Array(11, 22, 33, 44, 55, 66, 77, 88, 99, 100)
+    Dim auxiliar(9) As Integer
+    
+    ' Proceso
+    For i = LBound(vectorA) To UBound(vectorA)
+        auxiliar(9 - i) = vectorA(i)
+    Next i
+    
+    ' Muestra el VectorA - Antes del Volcado
+    Debug.Print "Vector_A - Antes"
+    For i = LBound(vectorA) To UBound(vectorA)
+        Debug.Print "V_A[" & (i + 1) & "] = " & vectorA(i)
+    Next i
+    
+    vectorA = auxiliar
+    Debug.Print " "
+    
+    ' Muestra el VectorA - Despues del Volcado
+    Debug.Print "Vector_A - Despues"
+    For i = LBound(vectorA) To UBound(vectorA)
+        Debug.Print "V_A[" & (i + 1) & "] = " & vectorA(i)
+    Next i
+    
+    
+End Sub
