@@ -1,0 +1,73 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 3 - Calculo del DNI"
+    Debug.Print " "
+    
+    Dim numero As Long
+    numero = 56999545
+    Debug.Print "Numero: " & numero
+    
+    dni = obtenerLetra(numero)
+    Debug.Print "DNI: " & dni
+    
+End Sub
+
+Function obtenerLetra(numeroDNI As Long) As String
+
+    Dim residuo As Long
+    
+    residuo = numeroDNI Mod 23
+    
+    Select Case residuo
+        Case Is = 0
+        result = numeroDNI & "T"
+        Case Is = 1
+        result = numeroDNI & "R"
+        Case Is = 2
+        result = numeroDNI & "W"
+        Case Is = 3
+        result = numeroDNI & "A"
+        Case Is = 4
+        result = numeroDNI & "G"
+        Case Is = 5
+        result = numeroDNI & "M"
+        Case Is = 6
+        result = numeroDNI & "Y"
+        Case Is = 7
+        result = numeroDNI & "F"
+        Case Is = 8
+        result = numeroDNI & "P"
+        Case Is = 9
+        result = numeroDNI & "D"
+        Case Is = 10
+        result = numeroDNI & "X"
+        Case Is = 11
+        result = numeroDNI & "B"
+        Case Is = 12
+        result = numeroDNI & "N"
+        Case Is = 13
+        result = numeroDNI & "J"
+        Case Is = 14
+        result = numeroDNI & "Z"
+        Case Is = 15
+        result = numeroDNI & "S"
+        Case Is = 16
+        result = numeroDNI & "Q"
+        Case Is = 17
+        result = numeroDNI & "V"
+        Case Is = 18
+        result = numeroDNI & "H"
+        Case Is = 19
+        result = numeroDNI & "L"
+        Case Is = 20
+        result = numeroDNI & "C"
+        Case Is = 21
+        result = numeroDNI & "K"
+        Case Is = 22
+        result = numeroDNI & "E"
+    End Select
+    
+    obtenerLetra = result
+    
+End Function
