@@ -1,0 +1,32 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 2 - Repeticion de un elemento "
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(15, 11, 15, 17, 14, 12, 15, 11, 10, 13)
+    element = 11
+    
+    ' Proceso
+    veces = repetido(vectorA, element) ' llamado a la funcion repetido()
+    
+    If veces > 1 Then ' dependiendo de las veces, cambia la salida
+        Debug.Print "El elemento: " & element & ", se repite " & veces & " veces"
+    Else
+        Debug.Print "El elemento: " & element & ", se repite " & veces & " vez"
+    End If
+    
+End Sub
+
+Function repetido(ByRef vector, ByVal elemento)
+    
+    For i = LBound(vector) To UBound(vector)
+        If (vector(i) = elemento) Then
+            contador = contador + 1
+        End If
+    Next i
+    
+    repetido = contador ' retorna las veces que se repite el elemento
+    
+End Function
