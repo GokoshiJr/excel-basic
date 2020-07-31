@@ -1,12 +1,13 @@
+
 Sub main()
 
     Debug.Print " "
-    Debug.Print "Ejercicio 2 - Simulacion de union de 2 conjuntos"
+    Debug.Print "Ejercicio 2 - Simulacion de union de 2 Vectores"
     Debug.Print " "
     
     ' Declaracion de Variables
-    vectorA = Array(1, 2, 3, 4, 5)
-    vectorB = Array(2, 4, 6, 8, 10)
+    vectorA = Array(2, 4, 6, 8, 10, 12)
+    vectorB = Array(5, 10, 15, 20, 25, 30)
     
     Debug.Print "-- Vector A --"
     Call mostrar(vectorA, "A")
@@ -15,7 +16,6 @@ Sub main()
     Debug.Print "-- Vector B --"
     Call mostrar(vectorB, "B")
     Debug.Print " "
-    
     
     vectorC = unionConjuntos(vectorA, vectorB)
     
@@ -29,7 +29,12 @@ End Sub
 
 Function unionConjuntos(ByRef vectorA, ByRef vectorB)
     
-    Dim universal(9) As Integer
+    ' Declaracion de Variables
+    Dim universal(), longA, longB, longTotal, k, x As Integer
+    longA = UBound(vectorA): longB = UBound(vectorB)
+    x = 0: k = -1: longTotal = longA + longB
+    
+    ReDim universal(longTotal)
     
     For i = LBound(vectorA) To UBound(vectorA)
         universal(i) = vectorA(i) ' Carga los valores del vector A
@@ -39,13 +44,22 @@ Function unionConjuntos(ByRef vectorA, ByRef vectorB)
     
         ' Verifica si esta repetido un valor del vector B
         If existe(universal, vectorB(i)) = False Then
-            universal(5 + x) = vectorB(i) ' Carga los valores del vector B
             x = x + 1
+            universal(longA + x) = vectorB(i) ' Carga los valores del vector B
+            Else
+            k = k + 1
         End If
         
     Next i
     
-    unionConjuntos = universal ' Return de la union de los 2 vectores
+    Dim union() As Integer
+    ReDim union(longTotal - k)
+    
+    For i = LBound(union) To UBound(union)
+        union(i) = universal(i) ' Carga los valores del vector A
+    Next i
+    
+    unionConjuntos = union ' Return de la union de los 2 vectores
     
 End Function
 
@@ -66,12 +80,11 @@ Function existe(ByRef vector, ByVal elemento)
 End Function
 
 Function mostrar(ByRef vector, ByVal nombre)
-
-    For i = LBound(vector) To UBound(vector)
     
-        If (vector(i) <> 0) Then
-            Debug.Print "Vector_" & nombre & "[" & (i + 1) & "]" & "= " & vector(i)
-        End If
+    'Muestra el Vector pasado por parametro
+    For i = LBound(vector) To UBound(vector)
+        
+        Debug.Print "Vector_" & nombre & "[" & (i + 1) & "]" & "= " & vector(i)
     
     Next i
 
