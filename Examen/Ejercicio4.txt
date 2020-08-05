@@ -1,0 +1,90 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 4 - Equilibrio Valores"
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 4, 5, 6, 7, 8, 10, 20)
+    vectorB = Array(10, 11, 20, 21, 30, 31)
+    vectorC = Array(1, 5, 2, 3, 4)
+    
+    Debug.Print equilibrio(vectorA, "A")
+    Debug.Print equilibrio(vectorB, "B")
+    Debug.Print equilibrio(vectorC, "C")
+    
+End Sub
+
+Function equilibrio(ByRef vector, ByVal nombre As String)
+
+    ' Declaracion de Variables
+    Dim li_V, ls_V, medio, medio2, contador, l, equi As Integer
+    Dim result As String
+    
+    ls_V = UBound(vector): li_V = LBound(vector): l = 0
+    contador = 0: medio = (ls_V / 2)
+    result = ""
+    
+    If (impar(vector)) Then
+        
+        For i = li_V To medio
+            If (vector(medio) > vector(i)) Then
+                contador = contador + 1
+            End If
+        Next i
+        
+        If (medio = contador) Then
+            equi = equi + 1
+        End If
+        
+    Else
+    
+        medio = (ls_V / 2) - 0.5
+        medio2 = medio + 1
+        
+        For i = li_V To medio
+            If (vector(medio) > vector(i)) Then
+                contador = contador + 1
+            End If
+        Next i
+        
+        For i = medio To ls_V
+            If (vector(medio2) < vector(i)) Then
+                contador = contador + 1
+            End If
+        Next i
+        
+        l = ls_V - 1
+        
+        If (l = contador) Then
+            equi = equi + 1
+        End If
+        
+    End If
+    
+    If (equi = 1) Then
+        result = "El vector " & nombre & ", Esta equilibrado."
+    Else
+        result = "El vector " & nombre & ", No esta equilibrado."
+    End If
+    
+    equilibrio = result
+   
+End Function
+
+Function impar(vector)
+
+    Dim ls_V As Integer
+    Dim result As Boolean
+    
+    ls_V = UBound(vector)
+    
+    If (ls_V Mod 2 = 0) Then
+        result = True
+    Else
+        result = False
+    End If
+    
+    impar = result
+    
+End Function
