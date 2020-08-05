@@ -1,0 +1,60 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 2 - Ordenamiento"
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30)
+    vectorB = Array(15, 14, 13, 12, 11, 10, 5, 2, 1)
+    vectorC = Array(10, 1, 5, 20, 3, 15)
+    
+    Debug.Print "El VectorA esta ordenado de forma:"
+    Debug.Print ordenar(vectorA)
+    
+    Debug.Print " "
+    Debug.Print "El VectorB esta ordenado de forma:"
+    Debug.Print ordenar(vectorB)
+    
+    Debug.Print " "
+    Debug.Print "El VectorC esta ordenado de forma:"
+    Debug.Print ordenar(vectorC)
+
+End Sub
+
+Function ordenar(ByRef vector)
+
+    ' Declaracion de Variables
+    Dim li_V, ls_V, ascendente, descendente As Integer
+    Dim result As String
+    
+    ls_V = UBound(vector) - 1
+    li_V = LBound(vector)
+    ascendente = 0: descendente = 0: result = "No esta Ordenado"
+    
+    For i = li_V To ls_V
+        If (vector(i) <= vector(i + 1)) Then
+            ascendente = ascendente + 1
+        End If
+    Next i
+    
+    If (ascendente = ls_V + 1) Then
+        result = "Ordenado Ascendente"
+    End If
+    
+    ' ------------------------------------
+    
+    For i = li_V To ls_V
+        If (vector(i) >= vector(i + 1)) Then
+            descendente = descendente + 1
+        End If
+    Next i
+    
+    
+    If (descendente = ls_V + 1) Then
+        result = "Ordenado Descendente"
+    End If
+    
+    ordenar = result
+
+End Function
