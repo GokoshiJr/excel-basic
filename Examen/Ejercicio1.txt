@@ -1,0 +1,88 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 1 - Diferencia Conjunto"
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 4, 5, 12, 6)
+    vectorB = Array(10, 11, 12, 13, 14)
+    
+    Debug.Print "-- Vector A --"
+    Call mostrar(vectorA, "A")
+    Debug.Print " "
+    
+    Debug.Print "-- Vector B --"
+    Call mostrar(vectorB, "B")
+    Debug.Print " "
+    
+    diferencia = diferenciaConjuntos(vectorA, vectorB)
+    
+    Debug.Print "-- Diferencia de A y B --"
+    Debug.Print " "
+    Debug.Print "-- A / B --"
+    Call mostrar(diferencia, "Diferencia")
+    Debug.Print " "
+
+End Sub
+
+Function diferenciaConjuntos(ByRef vectorA, ByRef vectorB)
+    
+    ' Declaracion de Variables
+    Dim diferencia(), k, x As Integer
+    Dim ls_A, li_A As Integer
+    
+    x = 0: k = 0
+    
+    ls_A = UBound(vectorA)
+    li_A = LBound(vectorA)
+    
+    For i = li_A To ls_A
+    
+        If existe(vectorB, vectorA(i)) = False Then
+            k = k + 1
+        End If
+        
+    Next i
+    
+    ReDim diferencia(k - 1)
+    
+    For i = li_A To ls_A
+        
+        If existe(vectorB, vectorA(i)) = False Then
+            diferencia(x) = vectorA(i) ' Carga los valores del vector B
+            x = x + 1
+        End If
+        
+    Next i
+    
+    diferenciaConjuntos = diferencia
+    
+End Function
+
+
+Function existe(ByRef vector, ByVal elemento)
+
+    ' Comprueba si existe un elemento en el vector
+    For i = LBound(vector) To UBound(vector)
+    
+        If vector(i) = elemento Then
+            existeElement = True
+        End If
+        
+    Next i
+    
+    existe = existeElement
+    
+End Function
+
+Function mostrar(ByRef vector, ByVal nombre)
+    
+    'Muestra el Vector pasado por parametro
+    For i = LBound(vector) To UBound(vector)
+        
+        Debug.Print "Vector_" & nombre & "[" & (i + 1) & "]" & "= " & vector(i)
+    
+    Next i
+
+End Function
