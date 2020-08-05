@@ -1,0 +1,31 @@
+Sub main()
+
+    Debug.Print " "
+    Debug.Print "Ejercicio 3 - Valor Medio"
+    Debug.Print " "
+    
+    ' Declaracion de Variables
+    vectorA = Array(1, 2, 3, 10, 9, 6, 7, 5, 11)
+    Debug.Print puntoMedio(vectorA, "A")
+
+End Sub
+
+Function puntoMedio(ByRef vector, ByVal nombre As String)
+
+    ' Declaracion de Variables
+    Dim li_V, ls_V, medio, contador As Integer
+    Dim result As String
+    
+    ls_V = UBound(vector): li_V = LBound(vector)
+    medio = (ls_V / 2): contador = 0
+    result = ""
+    
+    For i = li_V To ls_V
+        If (vector(medio) > vector(i)) Then
+            contador = contador + 1
+        End If
+    Next i
+    
+    puntoMedio = "En el vector " & nombre & ", hay " & contador & " elementos menores a " & vector(medio) & "."
+    
+End Function
